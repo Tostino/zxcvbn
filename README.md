@@ -18,28 +18,28 @@ Consider using zxcvbn as an algorithmic alternative to password composition poli
 * __More flexible__: zxcvbn allows many password styles to flourish so long as it detects sufficient complexity — passphrases are rated highly given enough uncommon words, keyboard patterns are ranked based on length and number of turns, and capitalization adds more complexity when it's unpredictaBle.
 * __More usable__: zxcvbn is designed to power simple, rule-free interfaces that give instant feedback. In addition to strength estimation, zxcvbn includes minimal, targeted verbal feedback that can help guide users towards less guessable passwords.
 
+For further detail and motivation, please refer to the USENIX Security '16 [paper and presentation](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler).
+
 At Dropbox we use zxcvbn ([Release notes](https://github.com/dropbox/zxcvbn/releases)) on our web, desktop, iOS and Android clients. If JavaScript doesn't work for you, others have graciously ported the library to these languages:
 
-* [`zxcvbn-c`](https://github.com/tsyrogit/zxcvbn-c) (C/C++)
-* [`zxcvbn-cpp`](https://github.com/rianhunter/zxcvbn-cpp) (C/C++/Python/JS)
-* [`nbvcxz`](https://github.com/GoSimpleLLC/nbvcxz) (Java)
-* [`zxcvbn4j`](https://github.com/nulab/zxcvbn4j) (Java)
-* [`zxcvbn-ios`](https://github.com/dropbox/zxcvbn-ios) (Objective-C)
 * [`zxcvbn-python`](https://github.com/dwolfhub/zxcvbn-python) (Python)
+* [`zxcvbn-cpp`](https://github.com/rianhunter/zxcvbn-cpp) (C/C++/Python/JS)
+* [`zxcvbn-c`](https://github.com/tsyrogit/zxcvbn-c) (C/C++)
+* [`zxcvbn-rs`](https://github.com/shssoichiro/zxcvbn-rs) (Rust)
 * [`zxcvbn-go`](https://github.com/nbutton23/zxcvbn-go) (Go)
+* [`zxcvbn4j`](https://github.com/nulab/zxcvbn4j) (Java)
+* [`nbvcxz`](https://github.com/GoSimpleLLC/nbvcxz) (Java)
 * [`zxcvbn-ruby`](https://github.com/envato/zxcvbn-ruby) (Ruby)
 * [`zxcvbn-js`](https://github.com/bitzesty/zxcvbn-js) (Ruby [via ExecJS])
-* [`zxcvbn-php`](https://github.com/bjeavons/zxcvbn-php) (PHP)
+* [`zxcvbn-ios`](https://github.com/dropbox/zxcvbn-ios) (Objective-C)
 * [`zxcvbn-cs`](https://github.com/mickford/zxcvbn-cs) (C#/.NET)
 * [`szxcvbn`](https://github.com/tekul/szxcvbn) (Scala)
+* [`zxcvbn-php`](https://github.com/bjeavons/zxcvbn-php) (PHP)
 * [`zxcvbn-api`](https://github.com/wcjr/zxcvbn-api) (REST)
+* [`ocaml-zxcvbn`](https://github.com/cryptosense/ocaml-zxcvbn) (OCaml bindings for `zxcvbn-c`)
 
 Integrations with other frameworks:
 * [`angular-zxcvbn`](https://github.com/ghostbar/angular-zxcvbn) (AngularJS)
-
-For more motivation, see:
-
-http://tech.dropbox.com/?p=165
 
 # Installation
 
@@ -219,7 +219,7 @@ zxcvbn operates below human perception of delay for most input: ~5-20ms for ~25 
 
 Then try one of these alternatives:
 
-1. Put your `<script src="zxcvbn.js">` tag at the end of your html, just before the closing `</body>` tag. This insures your page loads and renders before the browser fetches and loads `zxcvbn.js`. The downside with this approach is `zxcvbn()` becomes available later than had it been included in `<head>` — not an issue on most signup pages where users are filling out other fields first.
+1. Put your `<script src="zxcvbn.js">` tag at the end of your html, just before the closing `</body>` tag. This ensures your page loads and renders before the browser fetches and loads `zxcvbn.js`. The downside with this approach is `zxcvbn()` becomes available later than had it been included in `<head>` — not an issue on most signup pages where users are filling out other fields first.
 
 2. If you're using RequireJS, try loading `zxcvbn.js` separately from your main bundle. Something to watch out for: if `zxcvbn.js` is required inside a keyboard handler waiting for user input, the entire script might be loaded only after the user presses their first key, creating nasty latency. Avoid this by calling your handler once upon page load, independent of user input, such that the `requirejs()` call runs earlier.
 
